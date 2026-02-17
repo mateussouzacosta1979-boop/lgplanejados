@@ -10,6 +10,7 @@
 
 cozinha/cozinha-americana.jpg
 cozinha/cozinha-ilha-central.jpg
+cozinha/cozinha 1.jpg
 
 quarto/quarto-casal-moderno.jpg
 quarto/quarto-infantil.jpg
