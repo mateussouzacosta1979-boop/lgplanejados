@@ -120,7 +120,7 @@ const CONFIG = {
     subtitulo: "Juntos",
     descricao: "Entre em contato e receba um orçamento personalizado sem compromisso.",
     
-    telefone: "(XX) XXXXX-XXXX",
+    telefone: "(11) 98673-0990",
     email: "contato@marcenarialg.com.br",
     endereco: "Rua da Marcenaria, 123<br>Sua Cidade, Estado",
     horario: "Seg–Sex: 8h às 18h · Sab: 8h às 13h",
