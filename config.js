@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════════════
-// CONFIGURAÇÃO DO SITE - Marcenaria LG Planejados
+// CONFIGURAÇÃO DO SITE - LG Planejados - Marcenaria
 // ═══════════════════════════════════════════════════════════════════
 // Edite os textos abaixo para personalizar o conteúdo do site.
 // Após editar, faça commit e push — as mudanças aparecem automaticamente.
@@ -34,7 +34,7 @@ const CONFIG = {
     titulo: "Paixão pela",
     tituloDestaque: "Marcenaria",
     subtitulo: "desde 2009",
-    descricao: "A Marcenaria LG Planejados nasceu do amor pela madeira e do compromisso com a qualidade. Com mais de 15 anos de experiência, criamos ambientes únicos que refletem a personalidade de cada cliente, unindo técnica apurada com design moderno.",
+    descricao: "A LG Planejados - Marcenaria nasceu do amor pela madeira e do compromisso com a qualidade. Com mais de 15 anos de experiência, criamos ambientes únicos que refletem a personalidade de cada cliente, unindo técnica apurada com design moderno.",
     anosExperiencia: "15+",
     labelAnos: "Anos de<br>Excelência",
   },
@@ -122,14 +122,14 @@ const CONFIG = {
     
     telefone: "(11) 98673-0990",
     email: "planejadoslg42@gmail.com",
-    endereco: "Rua da Marcenaria, 123<br>Sua Cidade, Estado",
-    horario: "Seg–Sex: 8h às 18h · Sab: 8h às 13h",
+    endereco: "Rua Carijos, 3381, Vila Linda<br>Santo André, SP",
+    horario: "Segunda a quinta das 08:00 às 18:00 e as Sextas das 08:00 às 17:00",
   },
 
   // ─── FOOTER ───────────────────────────────────────────────────────
   footer: {
     descricao: "Transformando espaços com arte, precisão e paixão pela madeira há mais de 15 anos.",
-    copyright: "© 2025 Marcenaria LG Planejados. Todos os direitos reservados.",
+    copyright: "© 2025 LG Planejados - Marcenaria. Todos os direitos reservados.",
     assinatura: "Feito com arte & dedicação",
   },
 
