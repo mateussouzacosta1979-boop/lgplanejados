@@ -558,12 +558,12 @@
       </div>
     </div>
     <div class="services-grid">
-      <div class="service-card fade-in-on-scroll"><div class="service-num">01</div><div class="service-icon">🪑</div><h3 class="service-title">Cozinhas Planejadas</h3><p class="service-desc">Cozinhas funcionais e elegantes com aproveitamento total do espaço, armários, bancadas e acabamentos premium.</p></div>
-      <div class="service-card fade-in-on-scroll"><div class="service-num">02</div><div class="service-icon">🛏️</div><h3 class="service-title">Dormitórios</h3><p class="service-desc">Quartos com guarda-roupas planejados, cabeceiras, criados-mudos e painéis personalizados.</p></div>
-      <div class="service-card fade-in-on-scroll"><div class="service-num">03</div><div class="service-icon">📚</div><h3 class="service-title">Escritórios & Home Office</h3><p class="service-desc">Ambientes de trabalho produtivos com estantes, mesas, painéis e armazenamento inteligente.</p></div>
-      <div class="service-card fade-in-on-scroll"><div class="service-num">04</div><div class="service-icon">🛁</div><h3 class="service-title">Banheiros & Lavabos</h3><p class="service-desc">Armários e gabinetes planejados com resistência à umidade e design sofisticado.</p></div>
-      <div class="service-card fade-in-on-scroll"><div class="service-num">05</div><div class="service-icon">🏠</div><h3 class="service-title">Salas & Painéis</h3><p class="service-desc">Estantes, painéis de TV, aparadores e modulares que harmonizam funcionalidade com estética.</p></div>
-      <div class="service-card fade-in-on-scroll"><div class="service-num">06</div><div class="service-icon">🏢</div><h3 class="service-title">Projetos Comerciais</h3><p class="service-desc">Lojas, restaurantes e escritórios com soluções em marcenaria que expressam sua marca.</p></div>
+      <div class="service-card fade-in-on-scroll"><div class="service-num">01</div><div class="service-icon"></div><h3 class="service-title">Cozinhas Planejadas</h3><p class="service-desc">Cozinhas funcionais e elegantes com aproveitamento total do espaço, armários, bancadas e acabamentos premium.</p></div>
+      <div class="service-card fade-in-on-scroll"><div class="service-num">02</div><div class="service-icon"></div><h3 class="service-title">Dormitórios</h3><p class="service-desc">Quartos com guarda-roupas planejados, cabeceiras, criados-mudos e painéis personalizados.</p></div>
+      <div class="service-card fade-in-on-scroll"><div class="service-num">03</div><div class="service-icon"></div><h3 class="service-title">Escritórios & Home Office</h3><p class="service-desc">Ambientes de trabalho produtivos com estantes, mesas, painéis e armazenamento inteligente.</p></div>
+      <div class="service-card fade-in-on-scroll"><div class="service-num">04</div><div class="service-icon"></div><h3 class="service-title">Banheiros & Lavabos</h3><p class="service-desc">Armários e gabinetes planejados com resistência à umidade e design sofisticado.</p></div>
+      <div class="service-card fade-in-on-scroll"><div class="service-num">05</div><div class="service-icon"></div><h3 class="service-title">Salas & Painéis</h3><p class="service-desc">Estantes, painéis de TV, aparadores e modulares que harmonizam funcionalidade com estética.</p></div>
+      <div class="service-card fade-in-on-scroll"><div class="service-num">06</div><div class="service-icon"></div><h3 class="service-title">Projetos Comerciais</h3><p class="service-desc">Lojas, restaurantes e escritórios com soluções em marcenaria que expressam sua marca.</p></div>
     </div>
   </section>
 
@@ -916,7 +916,15 @@
           
           // Atualiza ícone com logo
           const iconDiv = serviceCards[i].querySelector('.service-icon');
-          iconDiv.innerHTML = '<img src="logo.png" alt="LG">';
+          const logoImg = document.createElement('img');
+          logoImg.src = 'logo.png';
+          logoImg.alt = 'LG';
+          logoImg.onerror = function() {
+            // Se o logo não carregar, usa iniciais LG
+            iconDiv.innerHTML = '<span style="font-family:Playfair Display,serif;font-size:1.1rem;font-weight:700;color:var(--gold)">LG</span>';
+          };
+          iconDiv.innerHTML = '';
+          iconDiv.appendChild(logoImg);
           
           serviceCards[i].querySelector('.service-title').textContent = srv.titulo;
           serviceCards[i].querySelector('.service-desc').textContent = srv.descricao;
