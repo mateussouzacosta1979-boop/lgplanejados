@@ -1,0 +1,21 @@
+# Galeria - Marcenaria LG Planejados
+#
+# Como adicionar fotos:
+#   1. Coloque a foto na pasta correta (cozinha/, quarto/, sala/, etc.)
+#   2. Adicione uma linha aqui: pasta/nome-arquivo.jpg
+#   3. Commit e push — a galeria atualiza sozinha!
+#
+# Linhas com # são ignoradas.
+# ──────────────────────────────────────
+
+cozinha/cozinha-americana.jpg
+cozinha/cozinha-ilha-central.jpg
+
+quarto/quarto-casal-moderno.jpg
+quarto/quarto-infantil.jpg
+
+sala/sala-painel-tv.jpg
+
+escritorio/home-office-completo.jpg
+
+banheiro/gabinete-banheiro.jpg
