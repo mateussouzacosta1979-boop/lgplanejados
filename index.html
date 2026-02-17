@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LG Planejados - Marcenaria</title>
+  <title>Marcenaria LG Planejados</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="config.js"></script>
   <style>
@@ -151,12 +152,18 @@
       inset: 0;
       background-size: cover;
       background-position: center;
-      opacity: 0.15;
+      opacity: 0.25;
       transition: all 0.4s ease;
       z-index: 0;
     }
+    .service-card-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,18,8,0.85) 0%, rgba(26,18,8,0.4) 60%, transparent 100%);
+    }
     .service-card:hover .service-card-bg {
-      opacity: 0.25;
+      opacity: 0.35;
       transform: scale(1.05);
     }
     .service-card > * {
@@ -425,7 +432,49 @@
     .stamp-bar { width: 30px; height: 1px; background: rgba(201,169,110,0.3); }
     .stamp-text { font-family: 'Montserrat', sans-serif; font-size: 0.58rem; letter-spacing: 0.2em; color: var(--gold); opacity: 0.6; }
 
+    /* ─── WHATSAPP BUTTONS ───────────────────────────────────── */
+    .whatsapp-float {
+      position: fixed; bottom: 24px; right: 24px; z-index: 10000;
+      width: 60px; height: 60px;
+      background: #25D366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px rgba(37,211,102,0.4);
+      cursor: pointer !important;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      animation: wppPulse 2s infinite;
+    }
+    .whatsapp-float *, .btn-whatsapp * { cursor: pointer !important; }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(37,211,102,0.6);
+    }
+    .whatsapp-float svg { width: 32px; height: 32px; fill: white; }
+    
+    .btn-whatsapp {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 16px 36px;
+      background: #25D366; color: white;
+      border: none; cursor: pointer !important;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center; gap: 10px;
+    }
+    .btn-whatsapp:hover {
+      background: #20BA5A;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37,211,102,0.4);
+    }
+    .btn-whatsapp svg { width: 18px; height: 18px; fill: white; }
+
     /* ANIMATIONS */
+    @keyframes wppPulse {
+      0%, 100% { box-shadow: 0 4px 12px rgba(37,211,102,0.4); }
+      50% { box-shadow: 0 4px 20px rgba(37,211,102,0.7); }
+    }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes rotateSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
@@ -454,6 +503,11 @@
   </style>
 </head>
 <body>
+
+  <!-- Botão flutuante WhatsApp -->
+  <a href="https://wa.me/5511986730990?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" class="whatsapp-float" title="Fale conosco no WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
 
   <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="cursorRing"></div>
@@ -494,9 +548,9 @@
       <p class="hero-desc">Transformamos madeira nobre em ambientes que contam a sua história. Criamos móveis planejados com excelência artesanal e design contemporâneo.</p>
       <div class="hero-actions">
         <a href="#galeria" class="btn-primary">Ver Projetos</a>
-        <a href="#contato" class="btn-secondary">
-          Solicitar Orçamento
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <a href="https://wa.me/5511986730990?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" class="btn-whatsapp">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          WhatsApp
         </a>
       </div>
     </div>
@@ -541,6 +595,10 @@
         <div class="feature-item"><div class="feature-icon">⏱️</div><div class="feature-title">Entrega no Prazo</div><div class="feature-desc">Compromisso com os prazos acordados, sem surpresas.</div></div>
         <div class="feature-item"><div class="feature-icon">🔧</div><div class="feature-title">Garantia Estendida</div><div class="feature-desc">Todos os nossos trabalhos têm garantia e suporte pós-entrega.</div></div>
       </div>
+      <a href="https://wa.me/5511986730990?text=Olá!%20Gostaria%20de%20conhecer%20mais%20sobre%20os%20serviços." target="_blank" class="btn-whatsapp" style="margin-top:32px">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Fale Conosco
+      </a>
     </div>
   </section>
 
@@ -558,12 +616,12 @@
       </div>
     </div>
     <div class="services-grid">
-      <div class="service-card fade-in-on-scroll"><div class="service-num">01</div><div class="service-icon"></div><h3 class="service-title">Cozinhas Planejadas</h3><p class="service-desc">Cozinhas funcionais e elegantes com aproveitamento total do espaço, armários, bancadas e acabamentos premium.</p></div>
-      <div class="service-card fade-in-on-scroll"><div class="service-num">02</div><div class="service-icon"></div><h3 class="service-title">Dormitórios</h3><p class="service-desc">Quartos com guarda-roupas planejados, cabeceiras, criados-mudos e painéis personalizados.</p></div>
-      <div class="service-card fade-in-on-scroll"><div class="service-num">03</div><div class="service-icon"></div><h3 class="service-title">Escritórios & Home Office</h3><p class="service-desc">Ambientes de trabalho produtivos com estantes, mesas, painéis e armazenamento inteligente.</p></div>
-      <div class="service-card fade-in-on-scroll"><div class="service-num">04</div><div class="service-icon"></div><h3 class="service-title">Banheiros & Lavabos</h3><p class="service-desc">Armários e gabinetes planejados com resistência à umidade e design sofisticado.</p></div>
-      <div class="service-card fade-in-on-scroll"><div class="service-num">05</div><div class="service-icon"></div><h3 class="service-title">Salas & Painéis</h3><p class="service-desc">Estantes, painéis de TV, aparadores e modulares que harmonizam funcionalidade com estética.</p></div>
-      <div class="service-card fade-in-on-scroll"><div class="service-num">06</div><div class="service-icon"></div><h3 class="service-title">Projetos Comerciais</h3><p class="service-desc">Lojas, restaurantes e escritórios com soluções em marcenaria que expressam sua marca.</p></div>
+      <div class="service-card fade-in-on-scroll"><div class="service-num">01</div><h3 class="service-title">Cozinhas Planejadas</h3><p class="service-desc">Cozinhas funcionais e elegantes com aproveitamento total do espaço, armários, bancadas e acabamentos premium.</p></div>
+      <div class="service-card fade-in-on-scroll"><div class="service-num">02</div><h3 class="service-title">Dormitórios</h3><p class="service-desc">Quartos com guarda-roupas planejados, cabeceiras, criados-mudos e painéis personalizados.</p></div>
+      <div class="service-card fade-in-on-scroll"><div class="service-num">03</div><h3 class="service-title">Escritórios & Home Office</h3><p class="service-desc">Ambientes de trabalho produtivos com estantes, mesas, painéis e armazenamento inteligente.</p></div>
+      <div class="service-card fade-in-on-scroll"><div class="service-num">04</div><h3 class="service-title">Banheiros & Lavabos</h3><p class="service-desc">Armários e gabinetes planejados com resistência à umidade e design sofisticado.</p></div>
+      <div class="service-card fade-in-on-scroll"><div class="service-num">05</div><h3 class="service-title">Salas & Painéis</h3><p class="service-desc">Estantes, painéis de TV, aparadores e modulares que harmonizam funcionalidade com estética.</p></div>
+      <div class="service-card fade-in-on-scroll"><div class="service-num">06</div><h3 class="service-title">Projetos Comerciais</h3><p class="service-desc">Lojas, restaurantes e escritórios com soluções em marcenaria que expressam sua marca.</p></div>
     </div>
   </section>
 
@@ -663,17 +721,19 @@
     <div class="fade-in-on-scroll">
       <div class="section-header"><div class="section-line"></div><span class="section-label">Solicite um Orçamento</span></div>
       <h3 class="section-title" style="font-size:1.8rem;margin-bottom:32px">Envie sua <em>Mensagem</em></h3>
-      <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/xeoqqrrp" method="POST">
         <div class="form-row">
-          <div class="form-group"><label>Nome Completo</label><input type="text" placeholder="Seu nome" required></div>
-          <div class="form-group"><label>Telefone</label><input type="tel" placeholder="(XX) XXXXX-XXXX"></div>
+          <div class="form-group"><label>Nome Completo</label><input type="text" name="nome" placeholder="Seu nome" required></div>
+          <div class="form-group"><label>Telefone</label><input type="tel" name="telefone" placeholder="(XX) XXXXX-XXXX"></div>
         </div>
-        <div class="form-group"><label>E-mail</label><input type="email" placeholder="seu@email.com" required></div>
+        <div class="form-group"><label>E-mail</label><input type="email" name="email" placeholder="seu@email.com" required></div>
         <div class="form-group">
           <label>Tipo de Projeto</label>
-          <select><option value="">Selecione o ambiente</option><option>Cozinha Planejada</option><option>Dormitório / Quarto</option><option>Escritório / Home Office</option><option>Sala de Estar / TV</option><option>Banheiro / Lavabo</option><option>Projeto Comercial</option><option>Outro</option></select>
+          <select name="tipo_projeto"><option value="">Selecione o ambiente</option><option>Cozinha Planejada</option><option>Dormitório / Quarto</option><option>Escritório / Home Office</option><option>Sala de Estar / TV</option><option>Banheiro / Lavabo</option><option>Projeto Comercial</option><option>Outro</option></select>
         </div>
-        <div class="form-group"><label>Mensagem</label><textarea placeholder="Conte-nos sobre o seu projeto..."></textarea></div>
+        <div class="form-group"><label>Mensagem</label><textarea name="mensagem" placeholder="Conte-nos sobre o seu projeto..."></textarea></div>
+        <input type="hidden" name="_subject" value="Novo contato - Marcenaria LG Planejados">
+        <input type="hidden" name="_next" value="#contato">
         <button type="submit" class="form-submit">Enviar Mensagem</button>
       </form>
       <div class="form-success" id="formSuccess"><p class="form-success-text">✓ Mensagem enviada com sucesso!<br>Entraremos em contato em breve.</p></div>
@@ -869,11 +929,8 @@
     });
 
     // ─── FORM ─────────────────────────────────────────────────
-    function handleSubmit(e) {
-      e.preventDefault();
-      document.getElementById('contactForm').style.display = 'none';
-      document.getElementById('formSuccess').classList.add('show');
-    }
+    // O formulário envia para planejadoslg42@gmail.com via Formspree
+    // Acesse https://formspree.io/forms/xeoqqrrp/integration para gerenciar
 
     // ─── INIT ─────────────────────────────────────────────────
     loadGallery();
@@ -914,17 +971,9 @@
           }
           serviceCards[i].insertBefore(bgDiv, serviceCards[i].firstChild);
           
-          // Atualiza ícone com logo
+          // Remove o ícone completamente
           const iconDiv = serviceCards[i].querySelector('.service-icon');
-          const logoImg = document.createElement('img');
-          logoImg.src = 'logo.png';
-          logoImg.alt = 'LG';
-          logoImg.onerror = function() {
-            // Se o logo não carregar, usa iniciais LG
-            iconDiv.innerHTML = '<span style="font-family:Playfair Display,serif;font-size:1.1rem;font-weight:700;color:var(--gold)">LG</span>';
-          };
-          iconDiv.innerHTML = '';
-          iconDiv.appendChild(logoImg);
+          if (iconDiv) iconDiv.remove();
           
           serviceCards[i].querySelector('.service-title').textContent = srv.titulo;
           serviceCards[i].querySelector('.service-desc').textContent = srv.descricao;
