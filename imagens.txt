@@ -8,9 +8,9 @@
 # Linhas com # são ignoradas.
 # ──────────────────────────────────────
 
-cozinha/cozinha-americana.jpg
 cozinha/cozinha-ilha-central.jpg
-cozinha/cozinha 1.jpg
+cozinha/cozinha-com-led.jpg
+cozinha/cozinha.jpg
 
 quarto/quarto-planejado-solteiro.jpg
 quarto/quarto-infantil.jpg
