@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Marcenaria LG Planejados</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="config.js"></script>
   <style>
     :root {
       --wood-dark: #2C1810;
@@ -81,7 +82,13 @@
     .btn-secondary:hover { color: var(--gold); }
     .btn-secondary:hover svg { transform: translateX(4px); }
     .hero-right { position: relative; overflow: hidden; }
-    .hero-wood-bg { position: absolute; inset: 0; background: linear-gradient(to right, var(--charcoal) 0%, transparent 25%), linear-gradient(135deg, var(--wood-dark) 0%, var(--wood-mid) 40%, var(--wood-warm) 70%, var(--wood-light) 100%); }
+    .hero-bg-image {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+    }
+    .hero-wood-bg { position: absolute; inset: 0; background: linear-gradient(to right, var(--charcoal) 0%, transparent 25%), linear-gradient(135deg, rgba(44,24,16,0.6) 0%, rgba(92,61,46,0.4) 60%, transparent 100%); z-index: 1; }
     .hero-wood-grain { position: absolute; inset: 0; opacity: 0.15; background-image: repeating-linear-gradient(85deg, transparent, transparent 3px, rgba(92,61,46,0.3) 3px, rgba(92,61,46,0.3) 4px); }
     .hero-overlay-shapes { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
     .hero-circle { width: 380px; height: 380px; border: 1px solid rgba(201,169,110,0.3); border-radius: 50%; position: absolute; animation: rotateSlow 30s linear infinite; }
@@ -108,6 +115,11 @@
     /* ABOUT */
     #sobre { background: var(--charcoal); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .about-frame { width: 100%; aspect-ratio: 3/4; background: linear-gradient(135deg, var(--wood-dark) 0%, var(--wood-mid) 60%, var(--wood-warm) 100%); position: relative; overflow: hidden; }
+    .about-photo {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
     .about-frame-inner { position: absolute; inset: 20px; border: 1px solid rgba(201,169,110,0.3); display: flex; align-items: center; justify-content: center; }
     .about-grain { position: absolute; inset: 0; opacity: 0.12; background-image: repeating-linear-gradient(90deg, transparent, transparent 6px, rgba(92,61,46,0.4) 6px, rgba(92,61,46,0.4) 7px); }
     .about-badge { position: absolute; bottom: -20px; right: -20px; width: 120px; height: 120px; background: var(--gold); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
@@ -125,13 +137,63 @@
     #servicos { background: linear-gradient(180deg, var(--charcoal) 0%, #120c06 100%); }
     .services-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-bottom: 70px; }
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-    .service-card { background: rgba(44,24,16,0.4); border: 1px solid rgba(92,61,46,0.25); padding: 40px 30px; position: relative; overflow: hidden; transition: all 0.4s ease; cursor: none; }
-    .service-card::before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--gold); transform: scaleX(0); transition: transform 0.4s ease; }
+    .service-card { 
+      background: rgba(44,24,16,0.4); 
+      border: 1px solid rgba(92,61,46,0.25); 
+      padding: 40px 30px; 
+      position: relative; 
+      overflow: hidden; 
+      transition: all 0.4s ease; 
+      cursor: none; 
+    }
+    .service-card-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15;
+      transition: all 0.4s ease;
+      z-index: 0;
+    }
+    .service-card:hover .service-card-bg {
+      opacity: 0.25;
+      transform: scale(1.05);
+    }
+    .service-card > * {
+      position: relative;
+      z-index: 1;
+    }
+    .service-card::before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--gold); transform: scaleX(0); transition: transform 0.4s ease; z-index: 2; }
     .service-card:hover { background: rgba(44,24,16,0.7); border-color: rgba(201,169,110,0.3); transform: translateY(-4px); }
     .service-card:hover::before { transform: scaleX(1); }
     .service-num { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 700; color: rgba(201,169,110,0.08); line-height: 1; margin-bottom: 16px; }
-    .service-icon { width: 44px; height: 44px; border: 1px solid rgba(201,169,110,0.4); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 1.3rem; transition: all 0.4s ease; }
-    .service-card:hover .service-icon { background: var(--gold); border-color: var(--gold); }
+    .service-icon { 
+      width: 44px; 
+      height: 44px; 
+      border: 1px solid rgba(201,169,110,0.4); 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      margin-bottom: 20px; 
+      transition: all 0.4s ease;
+      padding: 6px;
+      background: rgba(26,18,8,0.5);
+    }
+    .service-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0.7;
+      transition: opacity 0.4s ease;
+    }
+    .service-card:hover .service-icon { 
+      background: var(--gold); 
+      border-color: var(--gold); 
+    }
+    .service-card:hover .service-icon img {
+      opacity: 1;
+      filter: brightness(0.2);
+    }
     .service-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; color: var(--cream); margin-bottom: 12px; }
     .service-desc { font-size: 0.95rem; font-weight: 300; color: var(--wood-pale); line-height: 1.7; }
 
@@ -439,6 +501,7 @@
       </div>
     </div>
     <div class="hero-right">
+      <img src="" alt="Marcenaria LG" class="hero-bg-image" id="heroBgImage">
       <div class="hero-wood-bg"></div>
       <div class="hero-wood-grain"></div>
       <div class="hero-overlay-shapes">
@@ -461,12 +524,7 @@
     <div class="about-visual fade-in-on-scroll">
       <div class="about-frame">
         <div class="about-grain"></div>
-        <div class="about-frame-inner">
-          <div style="text-align:center; opacity:0.4;">
-            <div style="font-size:4rem;">🪵</div>
-            <div style="font-family:'Montserrat',sans-serif;font-size:0.6rem;letter-spacing:0.3em;color:var(--wood-pale);text-transform:uppercase;margin-top:12px;">Madeira Nobre</div>
-          </div>
-        </div>
+        <img src="" alt="Sobre nós" class="about-photo" id="aboutPhoto">
       </div>
       <div class="about-badge">
         <span class="badge-num">15+</span>
@@ -819,6 +877,87 @@
 
     // ─── INIT ─────────────────────────────────────────────────
     loadGallery();
+    populateContent();
+
+    // ─── POPULATE CONTENT FROM CONFIG ────────────────────────
+    function populateContent() {
+      // Imagens
+      document.getElementById('heroBgImage').src = CONFIG.imagens.heroBackground;
+      document.getElementById('aboutPhoto').src = CONFIG.imagens.sobreFoto;
+
+      // Hero
+      document.querySelector('.hero-eyebrow').textContent = CONFIG.hero.eyebrow;
+      document.querySelector('.hero-title').innerHTML = 
+        `${CONFIG.hero.titulo}<br><em>${CONFIG.hero.tituloDestaque}</em>`;
+      document.querySelector('.hero-desc').textContent = CONFIG.hero.descricao;
+
+      // Sobre
+      document.querySelector('#sobre .section-title').innerHTML = 
+        `${CONFIG.sobre.titulo} <em>${CONFIG.sobre.tituloDestaque}</em> ${CONFIG.sobre.subtitulo}`;
+      document.querySelector('#sobre .section-desc').textContent = CONFIG.sobre.descricao;
+      document.querySelector('.badge-num').textContent = CONFIG.sobre.anosExperiencia;
+      document.querySelector('.badge-text').innerHTML = CONFIG.sobre.labelAnos;
+
+      // Serviços
+      document.querySelector('#servicos .section-title').innerHTML = 
+        `${CONFIG.servicos.titulo} <em>${CONFIG.servicos.tituloDestaque}</em>`;
+      document.querySelector('#servicos .section-desc').textContent = CONFIG.servicos.descricao;
+      
+      const serviceCards = document.querySelectorAll('.service-card');
+      CONFIG.servicos.lista.forEach((srv, i) => {
+        if (serviceCards[i]) {
+          // Adiciona imagem de fundo
+          const bgDiv = document.createElement('div');
+          bgDiv.className = 'service-card-bg';
+          if (CONFIG.imagens[srv.bgImage]) {
+            bgDiv.style.backgroundImage = `url(${CONFIG.imagens[srv.bgImage]})`;
+          }
+          serviceCards[i].insertBefore(bgDiv, serviceCards[i].firstChild);
+          
+          // Atualiza ícone com logo
+          const iconDiv = serviceCards[i].querySelector('.service-icon');
+          iconDiv.innerHTML = '<img src="logo.png" alt="LG">';
+          
+          serviceCards[i].querySelector('.service-title').textContent = srv.titulo;
+          serviceCards[i].querySelector('.service-desc').textContent = srv.descricao;
+        }
+      });
+
+      // Galeria
+      document.querySelector('#galeria .section-title').innerHTML = 
+        `${CONFIG.galeria.titulo} <em>${CONFIG.galeria.tituloDestaque}</em>`;
+      document.querySelector('#galeria .section-desc').textContent = CONFIG.galeria.descricao;
+
+      // Depoimentos
+      document.querySelector('#depoimentos .section-title').innerHTML = 
+        `${CONFIG.depoimentos.titulo} <em>${CONFIG.depoimentos.tituloDestaque}</em>`;
+      
+      const testimonialCards = document.querySelectorAll('.testimonial-card');
+      CONFIG.depoimentos.lista.forEach((dep, i) => {
+        if (testimonialCards[i]) {
+          testimonialCards[i].querySelector('.testimonial-text').textContent = dep.texto;
+          testimonialCards[i].querySelector('.author-avatar').textContent = dep.iniciais;
+          testimonialCards[i].querySelector('.author-name').textContent = dep.autor;
+          testimonialCards[i].querySelector('.author-info').textContent = dep.info;
+        }
+      });
+
+      // Contato
+      document.querySelector('#contato .section-title').innerHTML = 
+        `${CONFIG.contato.titulo} <em>${CONFIG.contato.tituloDestaque}</em> ${CONFIG.contato.subtitulo}`;
+      document.querySelector('#contato .section-desc').textContent = CONFIG.contato.descricao;
+      
+      const contactItems = document.querySelectorAll('.contact-item');
+      contactItems[0].querySelector('.contact-item-text').textContent = CONFIG.contato.telefone;
+      contactItems[1].querySelector('.contact-item-text').textContent = CONFIG.contato.email;
+      contactItems[2].querySelector('.contact-item-text').innerHTML = CONFIG.contato.endereco;
+      contactItems[3].querySelector('.contact-item-text').textContent = CONFIG.contato.horario;
+
+      // Footer
+      document.querySelector('.footer-brand-desc').textContent = CONFIG.footer.descricao;
+      document.querySelector('.footer-copy').textContent = CONFIG.footer.copyright;
+      document.querySelector('.stamp-text').textContent = CONFIG.footer.assinatura;
+    }
   </script>
 </body>
 </html>
