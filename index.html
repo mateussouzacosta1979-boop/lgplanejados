@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LG Planejados - Marcenaria</title>
+  <title>Marcenaria LG Planejados</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="config.js"></script>
   <style>
@@ -151,12 +151,18 @@
       inset: 0;
       background-size: cover;
       background-position: center;
-      opacity: 0.15;
+      opacity: 0.25;
       transition: all 0.4s ease;
       z-index: 0;
     }
+    .service-card-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,18,8,0.85) 0%, rgba(26,18,8,0.4) 60%, transparent 100%);
+    }
     .service-card:hover .service-card-bg {
-      opacity: 0.25;
+      opacity: 0.35;
       transform: scale(1.05);
     }
     .service-card > * {
@@ -475,7 +481,7 @@
   <!-- NAV -->
   <nav>
     <div class="logo">
-      <img src="logo.png" alt="LG Planejados" class="nav-logo">
+      <img src="logo.png" alt="Marcenaria LG Planejados" class="nav-logo">
     </div>
     <ul class="nav-links">
       <li><a href="#sobre">Sobre</a></li>
@@ -558,12 +564,12 @@
       </div>
     </div>
     <div class="services-grid">
-      <div class="service-card fade-in-on-scroll"><div class="service-num">01</div><div class="service-icon"></div><h3 class="service-title">Cozinhas Planejadas</h3><p class="service-desc">Cozinhas funcionais e elegantes com aproveitamento total do espaço, armários, bancadas e acabamentos premium.</p></div>
-      <div class="service-card fade-in-on-scroll"><div class="service-num">02</div><div class="service-icon"></div><h3 class="service-title">Dormitórios</h3><p class="service-desc">Quartos com guarda-roupas planejados, cabeceiras, criados-mudos e painéis personalizados.</p></div>
-      <div class="service-card fade-in-on-scroll"><div class="service-num">03</div><div class="service-icon"></div><h3 class="service-title">Escritórios & Home Office</h3><p class="service-desc">Ambientes de trabalho produtivos com estantes, mesas, painéis e armazenamento inteligente.</p></div>
-      <div class="service-card fade-in-on-scroll"><div class="service-num">04</div><div class="service-icon"></div><h3 class="service-title">Banheiros & Lavabos</h3><p class="service-desc">Armários e gabinetes planejados com resistência à umidade e design sofisticado.</p></div>
-      <div class="service-card fade-in-on-scroll"><div class="service-num">05</div><div class="service-icon"></div><h3 class="service-title">Salas & Painéis</h3><p class="service-desc">Estantes, painéis de TV, aparadores e modulares que harmonizam funcionalidade com estética.</p></div>
-      <div class="service-card fade-in-on-scroll"><div class="service-num">06</div><div class="service-icon"></div><h3 class="service-title">Projetos Comerciais</h3><p class="service-desc">Lojas, restaurantes e escritórios com soluções em marcenaria que expressam sua marca.</p></div>
+      <div class="service-card fade-in-on-scroll"><div class="service-num">01</div><h3 class="service-title">Cozinhas Planejadas</h3><p class="service-desc">Cozinhas funcionais e elegantes com aproveitamento total do espaço, armários, bancadas e acabamentos premium.</p></div>
+      <div class="service-card fade-in-on-scroll"><div class="service-num">02</div><h3 class="service-title">Dormitórios</h3><p class="service-desc">Quartos com guarda-roupas planejados, cabeceiras, criados-mudos e painéis personalizados.</p></div>
+      <div class="service-card fade-in-on-scroll"><div class="service-num">03</div><h3 class="service-title">Escritórios & Home Office</h3><p class="service-desc">Ambientes de trabalho produtivos com estantes, mesas, painéis e armazenamento inteligente.</p></div>
+      <div class="service-card fade-in-on-scroll"><div class="service-num">04</div><h3 class="service-title">Banheiros & Lavabos</h3><p class="service-desc">Armários e gabinetes planejados com resistência à umidade e design sofisticado.</p></div>
+      <div class="service-card fade-in-on-scroll"><div class="service-num">05</div><h3 class="service-title">Salas & Painéis</h3><p class="service-desc">Estantes, painéis de TV, aparadores e modulares que harmonizam funcionalidade com estética.</p></div>
+      <div class="service-card fade-in-on-scroll"><div class="service-num">06</div><h3 class="service-title">Projetos Comerciais</h3><p class="service-desc">Lojas, restaurantes e escritórios com soluções em marcenaria que expressam sua marca.</p></div>
     </div>
   </section>
 
@@ -914,17 +920,9 @@
           }
           serviceCards[i].insertBefore(bgDiv, serviceCards[i].firstChild);
           
-          // Atualiza ícone com logo
+          // Remove o ícone completamente
           const iconDiv = serviceCards[i].querySelector('.service-icon');
-          const logoImg = document.createElement('img');
-          logoImg.src = 'logo.png';
-          logoImg.alt = 'LG';
-          logoImg.onerror = function() {
-            // Se o logo não carregar, usa iniciais LG
-            iconDiv.innerHTML = '<span style="font-family:Playfair Display,serif;font-size:1.1rem;font-weight:700;color:var(--gold)">LG</span>';
-          };
-          iconDiv.innerHTML = '';
-          iconDiv.appendChild(logoImg);
+          if (iconDiv) iconDiv.remove();
           
           serviceCards[i].querySelector('.service-title').textContent = srv.titulo;
           serviceCards[i].querySelector('.service-desc').textContent = srv.descricao;
